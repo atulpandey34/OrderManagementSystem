@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebAPI</name>
+    </assembly>
+    <members>
+        <member name="T:WebAPI.Auth">
+            <summary>
+            Authentication class
+            </summary>
+        </member>
+        <member name="M:WebAPI.Auth.Authentication(System.String,System.String)">
+            <summary>
+            Get Authentication Token
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebAPI.Controllers.WeatherForecastController">
+            <summary>
+            WeatherForecast Controller
+            </summary>
+        </member>
+        <member name="M:WebAPI.Controllers.WeatherForecastController.#ctor(Microsoft.Extensions.Logging.ILogger{WebAPI.Controllers.WeatherForecastController})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:WebAPI.Controllers.WeatherForecastController.Get">
+            <summary>
+            Get Weather forecast
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WebAPI.IjwtAuth">
+            <summary>
+            Interface
+            </summary>
+        </member>
+        <member name="M:WebAPI.IjwtAuth.Authentication(System.String,System.String)">
+            <summary>
+            Authentication
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebAPI.Model.Member">
+            <summary>
+            Member
+            </summary>
+        </member>
+        <member name="T:WebAPI.Model.UserCredential">
+            <summary>
+            UserCredential
+            </summary>
+        </member>
+    </members>
+</doc>
