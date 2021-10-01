@@ -20,6 +20,7 @@ using DataAccessLayer;
 using DataAccessLayer.Services.Interface;
 using DataAccessLayer.Services;
 using DataAccessLayer.DB;
+using WebAPI.Model.ViewModel;
 
 namespace WebAPI
 {
@@ -62,8 +63,10 @@ namespace WebAPI
                 };
             });
 
+            services.AddScoped<Result, Result>();
             services.AddSingleton<IjwtAuth>(new Auth(key));
             services.AddScoped<IAuthenticateService, AuthenticationService>();
+            services.AddScoped<IOrderService, OrderService>();
 
 
             services.AddSwaggerGen(c =>

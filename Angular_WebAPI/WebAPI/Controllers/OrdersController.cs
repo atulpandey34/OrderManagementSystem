@@ -24,23 +24,61 @@ namespace WebAPI.Controllers
     [ApiController]
     public class OrdersController : ControllerBase
     {
+        private readonly Result res;
         private readonly IjwtAuth jwtAuth;
-        private readonly OMSDBContext _dbContext;
-        private readonly IAuthenticateService authenticateService;
+        private readonly IOrderService orderService;
 
         /// <summary>
         /// constructor
         /// </summary>
         /// <param name="jwtAuth"></param>
-        /// <param name="dbContext"></param>
-        /// <param name="authenticateService"></param>
-        public OrdersController(IjwtAuth jwtAuth, OMSDBContext dbContext, IAuthenticateService authenticateService)
+        /// <param name="orderService"></param>
+        public OrdersController(IjwtAuth jwtAuth, IOrderService orderService, Result res)
         {
+            this.res = res;
             this.jwtAuth = jwtAuth;
-            this._dbContext = dbContext;
-            this.authenticateService = authenticateService;
+            this.orderService = orderService;
         }
 
+        /// <summary>
+        /// Add order
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        [HttpPost("Add")]
+        public Order Add( Order order)
+        {
+            orderService.AddOrder(order);
+            return order;
+        }
 
+        /// <summary>
+        /// Edit Order
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        [HttpPost("Edit")]
+        public IActionResult Edit([FromBody] Order order)
+        {
+            orderService.UpdateOrder(order);
+            res.header.success = true;
+            res.header.message = "Edit Order Success";
+            return Ok(res);
+        }
+
+        /// <summary>
+        /// GetAllOrderByUser
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult GetAll(int userId)
+        {
+          var orders = orderService.GetAllOrderByUser(userId);
+            res.header.success = true;
+            res.header.message = "Edit Order Success";
+            res.data = orders;
+            return Ok(res);
+        }
     }
 }

@@ -15,11 +15,23 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:WebAPI.Controllers.MembersController.MemberByid(System.Int32)">
+        <member name="T:WebAPI.Controllers.AuthController">
             <summary>
-            GET api/Members/5
+            Authenticate 
             </summary>
-            <param name="id"></param>
+        </member>
+        <member name="M:WebAPI.Controllers.AuthController.#ctor(WebAPI.IjwtAuth,DataAccessLayer.Services.Interface.IAuthenticateService)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="jwtAuth"></param>
+            <param name="authenticateService"></param>
+        </member>
+        <member name="M:WebAPI.Controllers.AuthController.Authentication(WebAPI.Model.UserCredential)">
+            <summary>
+            POST api/MembersController
+            </summary>
+            <param name="userCredential"></param>
             <returns></returns>
         </member>
         <member name="T:WebAPI.Controllers.OrdersController">
@@ -27,29 +39,32 @@
             Orders API
             </summary>
         </member>
-        <member name="M:WebAPI.Controllers.OrdersController.#ctor(WebAPI.IjwtAuth,DataAccessLayer.DB.OMSDBContext,DataAccessLayer.Services.Interface.IAuthenticateService)">
+        <member name="M:WebAPI.Controllers.OrdersController.#ctor(WebAPI.IjwtAuth,DataAccessLayer.Services.Interface.IOrderService,WebAPI.Model.ViewModel.Result)">
             <summary>
             constructor
             </summary>
             <param name="jwtAuth"></param>
-            <param name="dbContext"></param>
-            <param name="authenticateService"></param>
+            <param name="orderService"></param>
         </member>
-        <member name="T:WebAPI.Controllers.WeatherForecastController">
+        <member name="M:WebAPI.Controllers.OrdersController.Add(DataAccessLayer.DB.Order)">
             <summary>
-            WeatherForecast Controller
+            Add order
             </summary>
+            <param name="order"></param>
+            <returns></returns>
         </member>
-        <member name="M:WebAPI.Controllers.WeatherForecastController.#ctor(Microsoft.Extensions.Logging.ILogger{WebAPI.Controllers.WeatherForecastController})">
+        <member name="M:WebAPI.Controllers.OrdersController.Edit(DataAccessLayer.DB.Order)">
             <summary>
-            Constructor
+            Edit Order
             </summary>
-            <param name="logger"></param>
+            <param name="order"></param>
+            <returns></returns>
         </member>
-        <member name="M:WebAPI.Controllers.WeatherForecastController.Get">
+        <member name="M:WebAPI.Controllers.OrdersController.GetAll(System.Int32)">
             <summary>
-            Get Weather forecast
+            GetAllOrderByUser
             </summary>
+            <param name="userId"></param>
             <returns></returns>
         </member>
         <member name="T:WebAPI.IjwtAuth">

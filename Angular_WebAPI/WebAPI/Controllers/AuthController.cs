@@ -16,60 +16,35 @@ using WebAPI.Model.ViewModel;
 
 namespace WebAPI.Controllers
 {
+    /// <summary>
+    /// Authenticate 
+    /// </summary>
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class MembersController : ControllerBase
+    public class AuthController : ControllerBase
     {
         private readonly IjwtAuth jwtAuth;
-        private readonly OMSDBContext _dbContext;
         private readonly IAuthenticateService authenticateService;
-
-        private readonly List<Member> lstMember = new List<Member>()
-        {
-            new Member{Id=1, Name="Kirtesh" },
-            new Member {Id=2, Name="Nitya" },
-            new Member{Id=3, Name="pankaj"}
-        };
-
-        public MembersController(IjwtAuth jwtAuth, OMSDBContext dbContext, IAuthenticateService authenticateService)
-        {
-            this.jwtAuth = jwtAuth;
-            this._dbContext = dbContext;
-            this.authenticateService = authenticateService;
-        }
-        //// GET: api/<MembersController>
-        //[HttpGet]
-        //public IEnumerable<EmployeeViewModel> AllMembers()
-        //{
-        //    var _emplst = _dbContext.tblEmployees.
-        //                    Join(_dbContext.tblSkills, e => e.SkillID, s => s.SkillID,
-        //                    (e, s) => new EmployeeViewModel
-        //                    {
-        //                        EmployeeID = e.EmployeeID,
-        //                        EmployeeName = e.EmployeeName,
-        //                        PhoneNumber = e.PhoneNumber,
-        //                        Skill = s.Title,
-        //                        YearsExperience = e.YearsExperience
-        //                    }).ToList();
-        //    IList<EmployeeViewModel> emplst = _emplst;
-        //    return emplst;
-        //}
 
 
         /// <summary>
-        /// GET api/Members/5
+        /// Constructor
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpGet("{id}")]
-        public Member MemberByid(int id)
+        /// <param name="jwtAuth"></param>
+        /// <param name="authenticateService"></param>
+        public AuthController(IjwtAuth jwtAuth, IAuthenticateService authenticateService)
         {
-            return lstMember.Find(x => x.Id == id);
+            this.jwtAuth = jwtAuth;
+            this.authenticateService = authenticateService;
         }
 
+        /// <summary>
+        /// POST api/MembersController
+        /// </summary>
+        /// <param name="userCredential"></param>
+        /// <returns></returns>
         [AllowAnonymous]
-        // POST api/<MembersController>
         [HttpPost("authentication")]
         public IActionResult Authentication([FromBody] UserCredential userCredential)
         {
@@ -103,6 +78,42 @@ namespace WebAPI.Controllers
             return Ok(res);
         }
 
+        //private readonly List<Member> lstMember = new List<Member>()
+        //{
+        //    new Member{Id=1, Name="Kirtesh" },
+        //    new Member {Id=2, Name="Nitya" },
+        //    new Member{Id=3, Name="pankaj"}
+        //};
+
+        //// GET: api/<MembersController>
+        //[HttpGet]
+        //public IEnumerable<EmployeeViewModel> AllMembers()
+        //{
+        //    var _emplst = _dbContext.tblEmployees.
+        //                    Join(_dbContext.tblSkills, e => e.SkillID, s => s.SkillID,
+        //                    (e, s) => new EmployeeViewModel
+        //                    {
+        //                        EmployeeID = e.EmployeeID,
+        //                        EmployeeName = e.EmployeeName,
+        //                        PhoneNumber = e.PhoneNumber,
+        //                        Skill = s.Title,
+        //                        YearsExperience = e.YearsExperience
+        //                    }).ToList();
+        //    IList<EmployeeViewModel> emplst = _emplst;
+        //    return emplst;
+        //}
+
+
+        ///// <summary>
+        ///// GET api/Members/5
+        ///// </summary>
+        ///// <param name="id"></param>
+        ///// <returns></returns>
+        //[HttpGet("{id}")]
+        //public Member MemberByid(int id)
+        //{
+        //    return lstMember.Find(x => x.Id == id);
+        //}
 
     }
 }
