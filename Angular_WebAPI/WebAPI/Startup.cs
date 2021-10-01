@@ -19,6 +19,7 @@ using Microsoft.EntityFrameworkCore;
 using DataAccessLayer;
 using DataAccessLayer.Services.Interface;
 using DataAccessLayer.Services;
+using DataAccessLayer.DB;
 
 namespace WebAPI
 {
@@ -40,7 +41,7 @@ namespace WebAPI
             var ConnectionString = Configuration.GetConnectionString("testDB");
 
             //Entity Framework  
-            services.AddDbContext<EmployeeContext>(options => options.UseSqlServer(ConnectionString));
+            services.AddDbContext<OMSDBContext>(options => options.UseSqlServer(ConnectionString));
 
             var key = "This is my first Test Key";
             services.AddAuthentication(x =>

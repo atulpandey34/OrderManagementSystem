@@ -22,6 +22,19 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:WebAPI.Controllers.OrdersController">
+            <summary>
+            Orders API
+            </summary>
+        </member>
+        <member name="M:WebAPI.Controllers.OrdersController.#ctor(WebAPI.IjwtAuth,DataAccessLayer.DB.OMSDBContext,DataAccessLayer.Services.Interface.IAuthenticateService)">
+            <summary>
+            constructor
+            </summary>
+            <param name="jwtAuth"></param>
+            <param name="dbContext"></param>
+            <param name="authenticateService"></param>
+        </member>
         <member name="T:WebAPI.Controllers.WeatherForecastController">
             <summary>
             WeatherForecast Controller

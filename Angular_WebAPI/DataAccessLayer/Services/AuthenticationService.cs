@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Services.Interface;
+﻿using DataAccessLayer.DB;
+using DataAccessLayer.Services.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,8 @@ namespace DataAccessLayer.Services
 {
     public class AuthenticationService : IAuthenticateService
     {
-        private readonly EmployeeContext _dbContext;
-        public AuthenticationService(EmployeeContext dbContext)
+        private readonly OMSDBContext _dbContext;
+        public AuthenticationService(OMSDBContext dbContext)
         {
             this._dbContext = dbContext;
         }

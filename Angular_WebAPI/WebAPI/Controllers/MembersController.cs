@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer;
+using DataAccessLayer.DB;
 using DataAccessLayer.Services;
 using DataAccessLayer.Services.Interface;
 using Microsoft.AspNetCore.Authentication;
@@ -21,7 +22,7 @@ namespace WebAPI.Controllers
     public class MembersController : ControllerBase
     {
         private readonly IjwtAuth jwtAuth;
-        private readonly EmployeeContext _dbContext;
+        private readonly OMSDBContext _dbContext;
         private readonly IAuthenticateService authenticateService;
 
         private readonly List<Member> lstMember = new List<Member>()
@@ -31,29 +32,29 @@ namespace WebAPI.Controllers
             new Member{Id=3, Name="pankaj"}
         };
 
-        public MembersController(IjwtAuth jwtAuth, EmployeeContext dbContext, IAuthenticateService authenticateService)
+        public MembersController(IjwtAuth jwtAuth, OMSDBContext dbContext, IAuthenticateService authenticateService)
         {
             this.jwtAuth = jwtAuth;
             this._dbContext = dbContext;
             this.authenticateService = authenticateService;
         }
-        // GET: api/<MembersController>
-        [HttpGet]
-        public IEnumerable<EmployeeViewModel> AllMembers()
-        {
-            var _emplst = _dbContext.tblEmployees.
-                            Join(_dbContext.tblSkills, e => e.SkillID, s => s.SkillID,
-                            (e, s) => new EmployeeViewModel
-                            {
-                                EmployeeID = e.EmployeeID,
-                                EmployeeName = e.EmployeeName,
-                                PhoneNumber = e.PhoneNumber,
-                                Skill = s.Title,
-                                YearsExperience = e.YearsExperience
-                            }).ToList();
-            IList<EmployeeViewModel> emplst = _emplst;
-            return emplst;
-        }
+        //// GET: api/<MembersController>
+        //[HttpGet]
+        //public IEnumerable<EmployeeViewModel> AllMembers()
+        //{
+        //    var _emplst = _dbContext.tblEmployees.
+        //                    Join(_dbContext.tblSkills, e => e.SkillID, s => s.SkillID,
+        //                    (e, s) => new EmployeeViewModel
+        //                    {
+        //                        EmployeeID = e.EmployeeID,
+        //                        EmployeeName = e.EmployeeName,
+        //                        PhoneNumber = e.PhoneNumber,
+        //                        Skill = s.Title,
+        //                        YearsExperience = e.YearsExperience
+        //                    }).ToList();
+        //    IList<EmployeeViewModel> emplst = _emplst;
+        //    return emplst;
+        //}
 
 
         /// <summary>

@@ -1,0 +1,2 @@
+﻿
+Scaffold-DbContext "Data Source=.\SQLExpress;Initial Catalog=OMSDB;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir DB
