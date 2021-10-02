@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class AuthenticationService extends BaseService {
   
   private urls = {
-    login: 'members/authentication',
+    login: 'auth/authentication',
     
   };
 

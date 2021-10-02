@@ -13,7 +13,7 @@ import { RegisterComponent } from './views/register/register.component';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'order',
     pathMatch: 'full',
   },
   {
@@ -53,13 +53,13 @@ export const routes: Routes = [
     children: [
      
       {
-        path: 'dashboard',
-        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
+        path: 'order',
+        loadChildren: () => import('./views/order/order.module').then(m => m.OrderModule)
         , canActivate: [AuthGuard]
       },
       {
-        path: 'theme',
-        loadChildren: () => import('./views/theme/theme.module').then(m => m.ThemeModule)
+        path: 'other',
+        loadChildren: () => import('./views/other/Other.module').then(m => m.OtherModule)
         , canActivate: [AuthGuard]
       }
     ]

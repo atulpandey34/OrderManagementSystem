@@ -46,7 +46,7 @@ namespace WebAPI.Controllers
         /// <param name="order"></param>
         /// <returns></returns>
         [HttpPost("Add")]
-        public Order Add( Order order)
+        public Order Add(Order order)
         {
             orderService.AddOrder(order);
             return order;
@@ -71,13 +71,24 @@ namespace WebAPI.Controllers
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("getall")]
         public IActionResult GetAll(int userId)
         {
-          var orders = orderService.GetAllOrderByUser(userId);
+            var orders = orderService.GetAllOrderByUser(userId);
+            var orderVM = orders.Select(x => new
+            {
+                Id = x.Id,
+                OrderNumber = x.OrderNumber,
+                OrderDueDate = x.OrderDueDate,
+                FirstName = x.User.FirstName,
+                LastName = x.User.LastName,
+                MobileNum = x.User.MobileNum,
+                OrderTotal = x.OrderTotal
+            }).ToList();
+
             res.header.success = true;
-            res.header.message = "Edit Order Success";
-            res.data = orders;
+            res.header.message = "GetAll Order Success";
+            res.data = orderVM;
             return Ok(res);
         }
     }

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace DataAccessLayer.Services
 {
@@ -38,7 +40,11 @@ namespace DataAccessLayer.Services
 
         public IEnumerable<Order> GetAllOrderByUser(int userid)
         {
-            return _dbContext.Orders.AsEnumerable();
+            return _dbContext.Orders
+                .Include(r => r.ShippingAddress)
+                .Include(r => r.User)
+                .Include(r => r.OrderStatus)
+                .AsEnumerable();
         }
     }
 }

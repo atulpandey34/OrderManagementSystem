@@ -12,6 +12,8 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
 
 import { AuthenticationService } from './services/authentication.service'
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthhttpInterceptor } from './http-interceptors/authhttp.interceptor';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -47,6 +49,7 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -67,6 +70,7 @@ import { ChartsModule } from 'ng2-charts';
     IconSetModule.forRoot(),
 
     HttpClientModule,
+     NgbModule,
   ],
   declarations: [
     AppComponent,
@@ -82,7 +86,12 @@ import { ChartsModule } from 'ng2-charts';
       useClass: HashLocationStrategy
     },
     IconSetService,
-    AuthenticationService
+    AuthenticationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthhttpInterceptor,
+      multi: true
+    },
   ],
   bootstrap: [ AppComponent ]
 })

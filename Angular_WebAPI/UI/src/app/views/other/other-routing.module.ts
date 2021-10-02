@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ColorsComponent } from './colors.component';
-import { TypographyComponent } from './typography.component';
+import { InvoiceComponent } from './invoice.component';
+import { TransactionComponent } from './transaction.component';
 
 const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Theme'
+      title: 'colors'
     },
     children: [
       {
@@ -16,17 +16,17 @@ const routes: Routes = [
         redirectTo: 'colors'
       },
       {
-        path: 'colors',
-        component: ColorsComponent,
+        path: 'invoice',
+        component: InvoiceComponent,
         data: {
-          title: 'Colors'
+          title: 'Invoice'
         }
       },
       {
-        path: 'typography',
-        component: TypographyComponent,
+        path: 'transaction',
+        component: TransactionComponent,
         data: {
-          title: 'Typography'
+          title: 'Transaction'
         }
       }
     ]
@@ -37,4 +37,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ThemeRoutingModule {}
+export class OtherRoutingModule {}

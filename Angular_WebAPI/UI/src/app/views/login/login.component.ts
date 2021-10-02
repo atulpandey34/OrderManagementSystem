@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     if (this.loginControls.valid) {
       this.authService.login(this.loginControls.value.email, this.loginControls.value.password).subscribe((res) => {
         if (res != null) {
-          this.router.navigate(['/dashboard'], { relativeTo: this.route });
+          this.router.navigate(['/order'], { relativeTo: this.route });
         } else {
           this.loginControls.value.isLoginSuccess = false;
         }

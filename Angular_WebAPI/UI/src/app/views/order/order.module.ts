@@ -4,17 +4,19 @@ import { ChartsModule } from 'ng2-charts';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
-import { DashboardComponent } from './dashboard.component';
-import { DashboardRoutingModule } from './dashboard-routing.module';
+import { OrderComponent } from './order.component';
+import { OrderRoutingModule } from './order-routing.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
+    CommonModule,
     FormsModule,
-    DashboardRoutingModule,
+    OrderRoutingModule,
     ChartsModule,
     BsDropdownModule,
     ButtonsModule.forRoot()
   ],
-  declarations: [ DashboardComponent ]
+  declarations: [ OrderComponent ]
 })
-export class DashboardModule { }
+export class OrderModule { }
