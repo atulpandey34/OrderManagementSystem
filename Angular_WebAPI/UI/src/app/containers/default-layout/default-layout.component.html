@@ -7,7 +7,7 @@
   [asideMenuToggler]="'lg'">
   <ul class="nav navbar-nav d-md-down-none">
     <li class="nav-item px-3">
-      <a class="nav-link" href="#">Dashboard1</a>
+      <a class="nav-link" href="#">Dashboard</a>
     </li>
     <li class="nav-item px-3">
       <a class="nav-link" href="#">Users</a>
@@ -34,7 +34,7 @@
         <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
         <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Setting</a>
         <<div class="divider"></div>
-        <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
+        <a class="dropdown-item" href="#"><i class="fa fa-lock" (click)="logout()"></i> Logout</a>
       </div>
     </li>
   </ul>
